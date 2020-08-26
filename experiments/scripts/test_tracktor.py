@@ -56,7 +56,8 @@ def main(tracktor, reid, _config, _log, _run):
     # object detection
     _log.info("Initializing object detector.")
 
-    obj_detect = FRCNN_FPN(num_classes=91)
+    # self-trained with 5 classes ('background', 'motorcycle', 'car', 'bus', 'truck')
+    obj_detect = FRCNN_FPN(num_classes=5)
     obj_detect.load_state_dict(torch.load(_config['tracktor']['obj_detect_model'],
                                map_location=lambda storage, loc: storage))
 
