@@ -61,7 +61,7 @@ class FRCNN_FPN(FasterRCNN):
         # ('background', 'motorcycle', 'car', 'bus', 'truck')
         pred_boxes = pred_boxes[:, 1:2].squeeze(dim=1).detach() 
         pred_boxes = resize_boxes(pred_boxes, self.preprocessed_images.image_sizes[0], self.original_image_sizes[0])
-        pred_scores = pred_scores[:, 4:5].squeeze(dim=1).detach()
+        pred_scores = pred_scores[:, 1:2].squeeze(dim=1).detach()
         return pred_boxes, pred_scores
 
     def load_image(self, images):
